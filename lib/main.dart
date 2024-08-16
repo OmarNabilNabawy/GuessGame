@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:guess_game/constants.dart';
+import 'package:guess_game/core/app_routes.dart';
 
 void main() {
   runApp(const GuessGame());
@@ -11,11 +13,8 @@ class GuessGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-        ),
-      ),
+      routes: appRoutes,
+      initialRoute: loginViewRoute,
     );
   }
 }
