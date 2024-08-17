@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:guess_game/constants.dart';
-import 'package:guess_game/core/widgets/custom_button.dart';
-import 'package:guess_game/core/widgets/custom_text_field.dart';
+import 'package:guess/constants.dart';
+import 'package:guess/core/widgets/custom_button.dart';
+import 'package:guess/core/widgets/custom_text_field.dart';
+
+import '../helper/show_snack_bar.dart';
 
 class AuthView extends StatefulWidget {
   final String viewName, haveAccount, logRegis;
@@ -95,25 +98,26 @@ class _RegisterViewState extends State<AuthView> {
                     if (formKey.currentState!.validate()) {
                       isLoading = true;
                       setState(() {});
-                      // try {
-                      if (widget.viewName == 'REGISTER') {
-                        // await registerUser();
-                      } else {
-                        //  await loginUser();
+                      try {
+                        if (widget.viewName == 'REGISTER') {
+                          await registerUser();
+                          Navigator.pushNamed(context, loginViewRoute,
+                              arguments: email);
+                          showSnackBar(context, 'Registration Successfully');
+                        } else {
+                          await loginUser();
+                          Navigator.pushNamed(context, gameViewRoute,
+                              arguments: email);
+                        }
+                      } on FirebaseAuthException catch (ex) {
+                        if (ex.code == 'weak-password') {
+                          showSnackBar(context, 'weak password');
+                        } else if (ex.code == 'email-already-in-use') {
+                          showSnackBar(context, 'email already exists');
+                        }
+                      } catch (ex) {
+                        showSnackBar(context, 'there was an error');
                       }
-
-                      // Navigator.pushNamed(context, registerViewRoute,
-                      //     arguments: email);
-                      // }
-                      //  on FirebaseAuthException catch (ex) {
-                      //   if (ex.code == 'weak-password') {
-                      //     showSnackBar(context, 'weak password');
-                      //   } else if (ex.code == 'email-already-in-use') {
-                      //     showSnackBar(context, 'email already exists');
-                      //   }
-                      // } catch (ex) {
-                      //   showSnackBar(context, 'there was an error');
-                      // }
 
                       isLoading = false;
                       setState(() {});
@@ -159,13 +163,13 @@ class _RegisterViewState extends State<AuthView> {
     );
   }
 
-  // Future<void> registerUser() async {
-  //   UserCredential user = await FirebaseAuth.instance
-  //       .createUserWithEmailAndPassword(email: email!, password: password!);
-  // }
+  Future<void> registerUser() async {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email!, password: password!);
+  }
 
-  //  Future<void> loginUser() async {
-  //   UserCredential user = await FirebaseAuth.instance
-  //       .signInWithEmailAndPassword(email: email!, password: password!);
-  // }
+  Future<void> loginUser() async {
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email!, password: password!);
+  }
 }

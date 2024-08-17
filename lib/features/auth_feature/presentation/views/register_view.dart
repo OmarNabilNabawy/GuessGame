@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_game/core/widgets/auth_view.dart';
+import 'package:guess/core/widgets/auth_view.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});

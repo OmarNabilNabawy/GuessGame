@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "483898678133",
+    "project_id": "guess-1cf0a",
+    "storage_bucket": "guess-1cf0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483898678133:android:532ad6a6755a5d6ac8d13c",
+        "android_client_info": {
+          "package_name": "com.example.guess"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIygw8yy7tdUVarfxFaIF3KGwJiA91zig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
