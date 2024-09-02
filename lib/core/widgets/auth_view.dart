@@ -26,6 +26,8 @@ class _RegisterViewState extends State<AuthView> {
 
   GlobalKey<FormState> formKey = GlobalKey();
 
+ 
+
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -106,7 +108,7 @@ class _RegisterViewState extends State<AuthView> {
                           showSnackBar(context, 'Registration Successfully');
                         } else {
                           await loginUser();
-                          Navigator.pushNamed(context, gameViewRoute,
+                          Navigator.pushNamed(context, enterNumberViewRoute,
                               arguments: email);
                         }
                       } on FirebaseAuthException catch (ex) {
@@ -172,4 +174,6 @@ class _RegisterViewState extends State<AuthView> {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email!, password: password!);
   }
+
+  
 }

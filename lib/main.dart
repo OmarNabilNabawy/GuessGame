@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:guess/constants.dart';
@@ -12,15 +13,34 @@ void main() async {
   runApp(const GuessGame());
 }
 
-class GuessGame extends StatelessWidget {
+class GuessGame extends StatefulWidget {
   const GuessGame({super.key});
+
+  @override
+  State<GuessGame> createState() => _GuessGameState();
+}
+
+class _GuessGameState extends State<GuessGame> {
+  String? initialRoute;
+  @override
+  void initState() {
+    super.initState();
+    _checkAuthentication();
+  }
+
+  Future<void> _checkAuthentication() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    setState(() {
+      initialRoute = user != null ? winViewRoute : loginViewRoute;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: appRoutes,
-      initialRoute: loginViewRoute,
+      initialRoute: initialRoute,
     );
   }
 }
