@@ -1,33 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:guess/constants.dart';
 
 class FireBaseServices {
-  // Future<String> getFirstValue(
-  //     {required String email, required bool isEqual}) async {
-  //   try {
-  //     FieldFilter filter = isEqual
-  //       ? FieldFilter.equalTo('id', email)
-  //       : FieldFilter.notEqualTo('id', email);
-  //     List<String> excludedValues = isEqual ? [] : [email];
-  //     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-  //         .collection(kMessagesCollections)
-  //         .where('isFirst', isEqualTo: 'true')
-  //         .where('id', isEqualTo: excludedValues)
-  //         .limit(1)
-  //         .get();
-  //     if (querySnapshot.docs.isNotEmpty) {
-  //       DocumentSnapshot documentSnapshot = querySnapshot.docs.first;
-  //       String value = documentSnapshot.get('roundNumbers');
-  //       return value;
-  //     } else {
-  //       return 'No matching document found';
-  //     }
-  //   } on Exception catch (e) {
-  //     return 'Error fetching data: $e';
-  //   }
-  // }
-
   Future<String> getFirstValue(
       {required String email, required bool isEqual}) async {
     try {
