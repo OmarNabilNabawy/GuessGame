@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:guess/constants.dart';
 import 'package:guess/features/auth_feature/presentation/views/login_view.dart';
 import 'package:guess/features/game_feature/presentation/views/enter_number_view.dart';
+import 'package:guess/features/game_feature/presentation/views/game_room_view.dart';
 import 'package:guess/features/game_feature/presentation/views/game_view.dart';
+import 'package:guess/features/game_feature/presentation/views/rooms_full_view.dart';
 import 'package:guess/features/game_feature/presentation/views/win_view.dart';
 
 import '../features/auth_feature/presentation/views/register_view.dart';
@@ -13,4 +15,6 @@ Map<String, Widget Function(BuildContext)> appRoutes = {
   gameViewRoute: (context) => const GameView(),
   enterNumberViewRoute: (context) => const EnterNumberView(),
   winViewRoute: (context) => const WinView(),
+  gameRoomViewRoute: (context) => const GameRoomView(),
+  roomsFullViewRoute: (context) => const RoomsFullView(),
 };

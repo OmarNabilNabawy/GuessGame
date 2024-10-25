@@ -1,6 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -37,7 +35,6 @@ class _PinEntryFieldState extends State<PinEntryField> {
       keyboardType: TextInputType.number,
       onCompleted: (inputValue) {
         widget.onCompleted(inputValue);
-        log("Completed: $inputValue");
       },
       // onChanged: (value) {
       //   log(value);

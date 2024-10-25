@@ -3,14 +3,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:guess/constants.dart';
 import 'package:guess/core/app_routes.dart';
+import 'package:guess/features/game_feature/presentation/manager/provider/game_state.dart';
 import 'package:guess/firebase_options.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const GuessGame());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => GameState(),
+      child: const GuessGame(),
+    ),
+  );
 }
 
 class GuessGame extends StatefulWidget {
@@ -31,7 +38,7 @@ class _GuessGameState extends State<GuessGame> {
   Future<void> _checkAuthentication() async {
     User? user = FirebaseAuth.instance.currentUser;
     setState(() {
-      initialRoute = user != null ? winViewRoute : loginViewRoute;
+      initialRoute = user != null ? gameRoomViewRoute : loginViewRoute;
     });
   }
 

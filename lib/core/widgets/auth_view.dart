@@ -108,7 +108,7 @@ class _RegisterViewState extends State<AuthView> {
                           showSnackBar(context, 'Registration Successfully');
                         } else {
                           await loginUser();
-                          Navigator.pushNamed(context, enterNumberViewRoute,
+                          Navigator.pushNamed(context, gameRoomViewRoute,
                               arguments: email);
                         }
                       } on FirebaseAuthException catch (ex) {
