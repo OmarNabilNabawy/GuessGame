@@ -55,7 +55,7 @@ class _EnterNumberViewState extends State<EnterNumberView> {
   Future<void> handleRoomStatus(
       String collectionName, CollectionReference messages) async {
     QuerySnapshot querySnapshot =
-        await messages.where('roomStatus', whereIn: ['closed', 'open']).get();
+        await messages.where('roomStatus', whereIn: ['closed', 'open','waiting']).get();
 
     bool hasClosedRoom =
         querySnapshot.docs.any((doc) => doc['roomStatus'] == 'closed');

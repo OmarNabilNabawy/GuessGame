@@ -5,6 +5,7 @@ import 'package:guess/constants.dart';
 import 'package:guess/features/game_feature/presentation/manager/provider/game_state.dart';
 import 'package:guess/features/game_feature/presentation/views/widgets/first_number_widget.dart';
 import 'package:guess/features/game_feature/presentation/views/widgets/round_number_body_list_view.dart';
+import 'package:guess/features/game_feature/presentation/views/widgets/scoring_app_bar.dart';
 import 'package:guess/features/game_feature/presentation/views/widgets/text_field_stream_builder.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,8 @@ class GameView extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: kPrimaryColor,
+            title: ScoringAppBar(roomName: collectionName),
+            centerTitle: true,
           ),
           body: Column(
             children: [

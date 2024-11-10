@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:guess/constants.dart';
+import 'package:guess/features/game_feature/data/models/scoring_model.dart';
+import 'package:guess/features/game_feature/presentation/manager/provider/game_state.dart';
 import 'package:guess/features/game_feature/presentation/views/widgets/game_room_list_tile.dart';
 import 'package:guess/features/game_feature/presentation/views/widgets/sign_out_button.dart';
+import 'package:provider/provider.dart';
 
 class GameRoomView extends StatefulWidget {
   const GameRoomView({super.key});
@@ -87,6 +90,7 @@ class _GameRoomViewState extends State<GameRoomView> {
     if (roomName.isNotEmpty) {
       setState(() {
         _gameRooms.add(roomName);
+        context.read<GameState>().scoringList.add(ScoringModel(roomName));
       });
       _textEditingController.clear();
       Navigator.of(context).pop();

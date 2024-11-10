@@ -87,8 +87,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:guess/constants.dart';
 import 'package:guess/features/game_feature/data/models/round_numbers_model.dart';
+import 'package:guess/features/game_feature/data/models/scoring_model.dart';
 import 'package:guess/features/game_feature/data/models/winner_page_data_model.dart';
+import 'package:guess/features/game_feature/presentation/manager/provider/game_state.dart';
 import 'package:guess/features/game_feature/presentation/views/widgets/round_item.dart';
+import 'package:provider/provider.dart';
 
 class RoundNumberBodyListView extends StatelessWidget {
   const RoundNumberBodyListView({
@@ -114,7 +117,6 @@ class RoundNumberBodyListView extends StatelessWidget {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
         }
-
         List<String> roundNumberList = _getRoundNumberList(snapshot.data!.docs);
 
         return ListView.builder(
@@ -176,6 +178,7 @@ class RoundNumberBodyListView extends StatelessWidget {
         context,
         winViewRoute,
         arguments: WinnerPageDataModel(
+          isMe: isMe,
           winnerMessage: winnerMessage,
           collectionName: collectionName,
         ),
