@@ -24,7 +24,9 @@ class GameRoomListTile extends StatelessWidget {
         color: Colors.grey[300],
         child: ListTile(
           contentPadding: const EdgeInsets.only(right: 5, left: 15),
-          leading: const Icon(Icons.place),
+          leading: AspectRatio(
+              aspectRatio: 1 / 1.7,
+              child: Image.asset('assets/images/app_icon.png')),
           title: Center(
             child: Text(
               collectionName,

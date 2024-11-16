@@ -59,8 +59,6 @@ class WinView extends StatelessWidget {
     );
   }
 
-  
-
   Future<void> handleRoomEnd(String collectionName,
       {bool isFinalEnd = false}) async {
     CollectionReference message =
@@ -105,46 +103,4 @@ class WinView extends StatelessWidget {
     roomScores.myScore = 0;
     roomScores.myFriendScore = 0;
   }
-
-  // Future<void> deleteRoomIfGameEnd(String collectionName) async {
-  //   CollectionReference message =
-  //       FirebaseFirestore.instance.collection(collectionName);
-  //   QuerySnapshot closedRooms =
-  //       await message.where('roomStatus', isEqualTo: 'closed').get();
-
-  //   bool hasClosedRoom = closedRooms.docs.isNotEmpty;
-
-  //   if (hasClosedRoom) {
-  //     message.get().then((value) {
-  //       for (DocumentSnapshot docName in value.docs) {
-  //         if (docName.id != collectionName) {
-  //           docName.reference.delete();
-  //         }
-  //       }
-  //     });
-  //     message.doc(collectionName).set({
-  //       'roomStatus': 'waiting',
-  //     });
-  //   }
-  // }
-
-  // Future<void> EndTheGame(String collectionName) async {
-  //   CollectionReference message =
-  //       FirebaseFirestore.instance.collection(collectionName);
-  //   QuerySnapshot closedRooms =
-  //       await message.where('roomStatus', isEqualTo: 'closed').get();
-
-  //   bool hasClosedRoom = closedRooms.docs.isNotEmpty;
-
-  //   if (hasClosedRoom) {
-  //     message.get().then((value) {
-  //       for (DocumentSnapshot docName in value.docs) {
-  //         docName.reference.delete();
-  //       }
-  //     });
-  //     message.doc(collectionName).set({
-  //       'roomStatus': 'waiting',
-  //     });
-  //   }
-  // }
 }

@@ -26,8 +26,6 @@ class _RegisterViewState extends State<AuthView> {
 
   GlobalKey<FormState> formKey = GlobalKey();
 
- 
-
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -43,9 +41,12 @@ class _RegisterViewState extends State<AuthView> {
                 const SizedBox(
                   height: 75,
                 ),
-                const Icon(
-                  Icons.place,
-                  size: 100,
+                AspectRatio(
+                  aspectRatio: 10 / 2.8,
+                  child: Image.asset('assets/images/app_icon.png'),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -174,6 +175,4 @@ class _RegisterViewState extends State<AuthView> {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email!, password: password!);
   }
-
-  
 }
